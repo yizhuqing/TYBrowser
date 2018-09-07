@@ -1,8 +1,10 @@
 ﻿using CefSharp;
 using CefSharp.Wpf;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -44,6 +46,11 @@ namespace TYBrowser
                 chrome.Address = config.Url;
                 txtUrl.Text = config.Url;
             }
+            if(config.FristLoad)
+                SetOpenStart(config.IsSelfStart);
+            config.FristLoad = false;
+            cbxIsSelfStart.IsChecked = config.IsSelfStart;
+            SaveConfig(config);
         }
 
         private void Chrome_Loaded(object sender, RoutedEventArgs e)
@@ -109,7 +116,61 @@ namespace TYBrowser
             return config;
         }
         public class Config {
+            private bool _fristLoad = true;
+            /// <summary>
+            /// 第一次加载
+            /// </summary>
+            public bool FristLoad { get { return _fristLoad; } set { _fristLoad = value; } }
             public string Url { get; set; }
+            private bool _isSelfStart = true;
+            /// <summary>
+            /// 是否开机启动
+            /// </summary>
+            public bool IsSelfStart { get { return _isSelfStart; }set { _isSelfStart = value; } }
+        }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            SetOpenStart(cbxIsSelfStart.IsChecked.Value);
+        }
+
+        private void SetOpenStart(bool isOpenStart)
+        {
+            string R_startPath = Assembly.GetExecutingAssembly().Location;
+            if (isOpenStart)
+            {
+                RegistryKey R_local = Registry.LocalMachine;
+                RegistryKey R_run = R_local.CreateSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run");
+                R_run.SetValue("TYBrowser", R_startPath);
+                R_run.Close();
+                R_local.Close();
+                cbxIsSelfStart.IsChecked = true;
+                config.IsSelfStart = true;
+                SaveConfig(config);
+            }
+            else
+            {
+                try
+                {
+                    RegistryKey R_local = Registry.LocalMachine;
+                    RegistryKey R_run = R_local.CreateSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run");
+                    R_run.DeleteValue("TYBrowser", false);
+                    R_run.Close();
+                    R_local.Close();
+                    cbxIsSelfStart.IsChecked = false;
+                    config.IsSelfStart = false;
+                    SaveConfig(config);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("您需要管理员权限修改", "提示",MessageBoxButton.OK);
+                }
+            }
+        }
+
+        private void cbxIsSelfStart_Unchecked(object sender, RoutedEventArgs e)
+        {
+            SetOpenStart(cbxIsSelfStart.IsChecked.Value);
         }
     }
 }

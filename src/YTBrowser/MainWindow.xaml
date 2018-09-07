@@ -5,15 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TYBrowser"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded" WindowStyle="None" WindowStartupLocation="CenterScreen" WindowState="Maximized" KeyDown="Window_KeyDown" Icon="logo.ico">
+        Title="工控机浏览器" Height="450" Width="800" Loaded="Window_Loaded" WindowStyle="None" WindowStartupLocation="CenterScreen" WindowState="Maximized" KeyDown="Window_KeyDown" Icon="logo.ico" Topmost="True">
 
-    <GroupBox x:Name="gSetting" Header="启动参数" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.IsSharedSizeScope="True" Width="782" FontSize="20">
+    <GroupBox x:Name="gSetting" Header="启动参数" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.IsSharedSizeScope="True" Width="782" FontSize="20" Margin="5,0" Height="153">
         <Grid>
-            <Label Content="   系统地址：" VerticalAlignment="Top" FontSize="18" Margin="43,0,608,0"/>
-            <TextBox x:Name="txtUrl" HorizontalAlignment="Right" Height="35" TextWrapping="Wrap" VerticalAlignment="Top" Width="455" RenderTransformOrigin="0.5,0.5" FontSize="18" Margin="0,-1,148,0">
-
-            </TextBox>
-            <Button x:Name="btnLoad" Content="加载" VerticalAlignment="Top" Click="btnLoad_Click" HorizontalAlignment="Right" Width="75" FontSize="18" RenderTransformOrigin="0.413,1.628" Margin="0,-1,33,0"/>
+            <Label Content="   系统地址：" VerticalAlignment="Top" FontSize="18" Margin="43,18,608,0"/>
+            <TextBox x:Name="txtUrl" HorizontalAlignment="Right" Height="35" TextWrapping="Wrap" VerticalAlignment="Top" Width="455" RenderTransformOrigin="0.5,0.5" FontSize="18" Margin="0,17,148,0"/>
+            <Button x:Name="btnLoad" Content="加载" VerticalAlignment="Top" Click="btnLoad_Click" HorizontalAlignment="Right" Width="75" FontSize="18" RenderTransformOrigin="0.413,1.628" Margin="0,17,33,0"/>
+            <Label Content="帮助：F1浏览模式 F2设置模式 F4退出 F5刷新 F11全屏或退出全屏" HorizontalAlignment="Right" Margin="0,354,90,-318" Foreground="#FFFD0707" Width="680"/>
+            <CheckBox x:Name="cbxIsSelfStart" Content="开机自动启动" HorizontalAlignment="Left" Margin="180,67,0,0" VerticalAlignment="Top" Checked="CheckBox_Checked" Unchecked="cbxIsSelfStart_Unchecked"/>
 
         </Grid>
     </GroupBox>
