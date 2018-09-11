@@ -81,9 +81,15 @@ namespace TYBrowser
                     break;
                 case Key.F11:
                     if (this.WindowState == WindowState.Normal)
+                    {
+                        this.WindowStyle = WindowStyle.None;
                         this.WindowState = WindowState.Maximized;
+                    }
                     else
+                    {
+                        this.WindowStyle = WindowStyle.SingleBorderWindow;
                         this.WindowState = WindowState.Normal;
+                    }
                     break;
             }
         }
