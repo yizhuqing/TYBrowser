@@ -1,8 +1,10 @@
 ﻿using CefSharp;
 using CefSharp.Wpf;
+using CefWebkit.CefSharpLib;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -16,28 +18,55 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Deployment.Application;
 
 namespace TYBrowser
 {
+    public class J {
+        public void Shutdown() {
+            Process.Start("shutdown.exe", "-s");//关机
+        }
+    }
     /// <summary>
     /// MainWindow.xaml 的交互逻辑
     /// </summary>
     public partial class MainWindow : Window
     {
-        ChromiumWebBrowser chrome=null;
         public MainWindow()
         {
             InitializeComponent();
         }
+            ChromiumWebBrowser chrome = null;
+        public void Shutdown()
+        {
+            Environment.Exit(0);// 
+            //Process.Start("shutdown.exe", "-s");//关机
+        }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            if (ApplicationDeployment.IsNetworkDeployed)
+            {
+                string paras = ApplicationDeployment.CurrentDeployment.ActivationUri.Query;
+                MessageBox.Show("启动参数：" + paras);
+            }
             //var settings = new CefSettings();
             //settings.BrowserSubprocessPath = @"x86\CefSharp.BrowserSubprocess.exe";
             //Cef.Initialize(settings, performDependencyCheck: false, browserProcessHandler: null);
 
             config = GetConfig();
             chrome = new CefSharp.Wpf.ChromiumWebBrowser();
+
+            //右键菜单栏
+            MenuHandler.mainWindow = this;
+            chrome.MenuHandler = new MenuHandler();
+            CefSharpSettings.LegacyJavascriptBindingEnabled = true;
+            chrome.RegisterJsObject("_host",  this);
+            //在本窗体中打开连接
+            chrome.LifeSpanHandler = new OpenPageSelf();
+            //下载接口实现
+            chrome.DownloadHandler = new DownloadHandler();
+
             chrome.LoadError += Chrome_LoadError;
             chrome.Loaded += Chrome_Loaded;
             if (!string.IsNullOrEmpty(config.Url))
@@ -79,6 +108,7 @@ namespace TYBrowser
                 case Key.F5:
                     chrome.Reload();
                     break;
+                case Key.F6:
                 case Key.F11:
                     if (this.WindowState == WindowState.Normal)
                     {

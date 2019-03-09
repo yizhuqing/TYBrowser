@@ -19,57 +19,61 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <CefSharpAnyCpuSupport>true</CefSharpAnyCpuSupport>
+    <ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>None</ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
     <TargetFrameworkProfile />
     <IsWebBootstrapper>true</IsWebBootstrapper>
     <PublishUrl>C:\Users\billy\Source\Repos\TYBrowser\deploy\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
-    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateEnabled>false</UpdateEnabled>
     <UpdateMode>Foreground</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
     <UpdateIntervalUnits>Days</UpdateIntervalUnits>
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <InstallUrl>http://xm.org315.cn/TYBrowser/</InstallUrl>
+    <InstallUrl>http://xm.org315.cn/doc/TYBrowser/</InstallUrl>
     <ProductName>天演浏览器</ProductName>
     <PublisherName>天演维真</PublisherName>
-    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>11</ApplicationRevision>
+    <AutorunEnabled>true</AutorunEnabled>
+    <ApplicationRevision>41</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>bin\x64\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\x86\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <DebugType>full</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>true</Prefer32Bit>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <OutputPath>bin\x86\Release\</OutputPath>
@@ -79,7 +83,28 @@
     <PlatformTarget>x86</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>true</Prefer32Bit>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>F70AC9DF553EEE763300F212AE967234C9526AE8</ManifestCertificateThumbprint>
@@ -94,47 +119,21 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CefSharp.Wpf, Version=63.0.3.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>E:\src_new\QMS\QmsMonitor\packages\CefSharp.Wpf.63.0.3\CefSharp\x86\CefSharp.Wpf.dll</HintPath>
-    </Reference>
-    <Reference Include="System">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Data">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Xml">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.CSharp">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Core">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Xml.Linq">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Data.DataSetExtensions">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Net.Http">
-      <Private>True</Private>
-    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
-      <Private>True</Private>
     </Reference>
-    <Reference Include="WindowsBase">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="PresentationCore">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="PresentationFramework">
-      <Private>True</Private>
-    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -149,6 +148,13 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="CustomCommand.cs" />
+    <Compile Include="DownloadHandler.cs" />
+    <Compile Include="Lib\FileHelper.cs" />
+    <Compile Include="Lib\FilePathHelper.cs" />
+    <Compile Include="Lib\ProcessHelper.cs" />
+    <Compile Include="MenuHandler.cs" />
+    <Compile Include="OpenPageSelf.cs" />
     <Compile Include="XmlSerialize.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -173,73 +179,138 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Content Include="cef.pak" />
-    <Content Include="cef_100_percent.pak" />
-    <Content Include="cef_200_percent.pak" />
-    <Content Include="cef_extensions.pak" />
-    <Content Include="devtools_resources.pak" />
-    <Content Include="icudtl.dat" />
-    <None Include="locales\am.pak" />
-    <None Include="locales\ar.pak" />
-    <None Include="locales\bg.pak" />
-    <None Include="locales\bn.pak" />
-    <None Include="locales\ca.pak" />
-    <None Include="locales\cs.pak" />
-    <None Include="locales\da.pak" />
-    <None Include="locales\de.pak" />
-    <None Include="locales\el.pak" />
-    <None Include="locales\en-GB.pak" />
-    <None Include="locales\en-US.pak" />
-    <None Include="locales\es-419.pak" />
-    <None Include="locales\es.pak" />
-    <None Include="locales\et.pak" />
-    <None Include="locales\fa.pak" />
-    <None Include="locales\fi.pak" />
-    <None Include="locales\fil.pak" />
-    <None Include="locales\fr.pak" />
-    <None Include="locales\gu.pak" />
-    <None Include="locales\he.pak" />
-    <None Include="locales\hi.pak" />
-    <None Include="locales\hr.pak" />
-    <None Include="locales\hu.pak" />
-    <None Include="locales\id.pak" />
-    <None Include="locales\it.pak" />
-    <None Include="locales\ja.pak" />
-    <None Include="locales\kn.pak" />
-    <None Include="locales\ko.pak" />
-    <None Include="locales\lt.pak" />
-    <None Include="locales\lv.pak" />
-    <None Include="locales\ml.pak" />
-    <None Include="locales\mr.pak" />
-    <None Include="locales\ms.pak" />
-    <None Include="locales\nb.pak" />
-    <None Include="locales\nl.pak" />
-    <None Include="locales\pl.pak" />
-    <None Include="locales\pt-BR.pak" />
-    <None Include="locales\pt-PT.pak" />
-    <None Include="locales\ro.pak" />
-    <None Include="locales\ru.pak" />
-    <None Include="locales\sk.pak" />
-    <None Include="locales\sl.pak" />
-    <None Include="locales\sr.pak" />
-    <None Include="locales\sv.pak" />
-    <None Include="locales\sw.pak" />
-    <None Include="locales\ta.pak" />
-    <None Include="locales\te.pak" />
-    <None Include="locales\th.pak" />
-    <None Include="locales\tr.pak" />
-    <None Include="locales\uk.pak" />
-    <None Include="locales\vi.pak" />
-    <None Include="locales\zh-CN.pak" />
-    <None Include="locales\zh-TW.pak" />
-    <Content Include="natives_blob.bin" />
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Content Include="snapshot_blob.bin" />
-    <Content Include="v8_context_snapshot.bin" />
+    <Content Include="x64\cef.pak" />
+    <Content Include="x64\cef_100_percent.pak" />
+    <Content Include="x64\cef_200_percent.pak" />
+    <Content Include="x64\cef_extensions.pak" />
+    <Content Include="x64\cef_sandbox.lib" />
+    <Content Include="x64\devtools_resources.pak" />
+    <Content Include="x64\icudtl.dat" />
+    <Content Include="x64\libcef.lib" />
+    <None Include="x64\locales\am.pak" />
+    <None Include="x64\locales\ar.pak" />
+    <None Include="x64\locales\bg.pak" />
+    <None Include="x64\locales\bn.pak" />
+    <None Include="x64\locales\ca.pak" />
+    <None Include="x64\locales\cs.pak" />
+    <None Include="x64\locales\da.pak" />
+    <None Include="x64\locales\de.pak" />
+    <None Include="x64\locales\el.pak" />
+    <None Include="x64\locales\en-GB.pak" />
+    <None Include="x64\locales\en-US.pak" />
+    <None Include="x64\locales\es-419.pak" />
+    <None Include="x64\locales\es.pak" />
+    <None Include="x64\locales\et.pak" />
+    <None Include="x64\locales\fa.pak" />
+    <None Include="x64\locales\fi.pak" />
+    <None Include="x64\locales\fil.pak" />
+    <None Include="x64\locales\fr.pak" />
+    <None Include="x64\locales\gu.pak" />
+    <None Include="x64\locales\he.pak" />
+    <None Include="x64\locales\hi.pak" />
+    <None Include="x64\locales\hr.pak" />
+    <None Include="x64\locales\hu.pak" />
+    <None Include="x64\locales\id.pak" />
+    <None Include="x64\locales\it.pak" />
+    <None Include="x64\locales\ja.pak" />
+    <None Include="x64\locales\kn.pak" />
+    <None Include="x64\locales\ko.pak" />
+    <None Include="x64\locales\lt.pak" />
+    <None Include="x64\locales\lv.pak" />
+    <None Include="x64\locales\ml.pak" />
+    <None Include="x64\locales\mr.pak" />
+    <None Include="x64\locales\ms.pak" />
+    <None Include="x64\locales\nb.pak" />
+    <None Include="x64\locales\nl.pak" />
+    <None Include="x64\locales\pl.pak" />
+    <None Include="x64\locales\pt-BR.pak" />
+    <None Include="x64\locales\pt-PT.pak" />
+    <None Include="x64\locales\ro.pak" />
+    <None Include="x64\locales\ru.pak" />
+    <None Include="x64\locales\sk.pak" />
+    <None Include="x64\locales\sl.pak" />
+    <None Include="x64\locales\sr.pak" />
+    <None Include="x64\locales\sv.pak" />
+    <None Include="x64\locales\sw.pak" />
+    <None Include="x64\locales\ta.pak" />
+    <None Include="x64\locales\te.pak" />
+    <None Include="x64\locales\th.pak" />
+    <None Include="x64\locales\tr.pak" />
+    <None Include="x64\locales\uk.pak" />
+    <None Include="x64\locales\vi.pak" />
+    <Content Include="x64\locales\zh-CN.pak" />
+    <Content Include="x64\locales\zh-TW.pak" />
+    <Content Include="x64\natives_blob.bin" />
+    <Content Include="x64\snapshot_blob.bin" />
+    <Content Include="x64\v8_context_snapshot.bin" />
+    <Content Include="x86\cef.pak" />
+    <Content Include="x86\cef_100_percent.pak" />
+    <Content Include="x86\cef_200_percent.pak" />
+    <Content Include="x86\cef_extensions.pak" />
+    <Content Include="x86\cef_sandbox.lib" />
+    <Content Include="x86\devtools_resources.pak" />
+    <Content Include="x86\icudtl.dat" />
+    <Content Include="x86\libcef.lib" />
+    <None Include="x86\locales\am.pak" />
+    <None Include="x86\locales\ar.pak" />
+    <None Include="x86\locales\bg.pak" />
+    <None Include="x86\locales\bn.pak" />
+    <None Include="x86\locales\ca.pak" />
+    <None Include="x86\locales\cs.pak" />
+    <None Include="x86\locales\da.pak" />
+    <None Include="x86\locales\de.pak" />
+    <None Include="x86\locales\el.pak" />
+    <None Include="x86\locales\en-GB.pak" />
+    <None Include="x86\locales\en-US.pak" />
+    <None Include="x86\locales\es-419.pak" />
+    <None Include="x86\locales\es.pak" />
+    <None Include="x86\locales\et.pak" />
+    <None Include="x86\locales\fa.pak" />
+    <None Include="x86\locales\fi.pak" />
+    <None Include="x86\locales\fil.pak" />
+    <None Include="x86\locales\fr.pak" />
+    <None Include="x86\locales\gu.pak" />
+    <None Include="x86\locales\he.pak" />
+    <None Include="x86\locales\hi.pak" />
+    <None Include="x86\locales\hr.pak" />
+    <None Include="x86\locales\hu.pak" />
+    <None Include="x86\locales\id.pak" />
+    <None Include="x86\locales\it.pak" />
+    <None Include="x86\locales\ja.pak" />
+    <None Include="x86\locales\kn.pak" />
+    <None Include="x86\locales\ko.pak" />
+    <None Include="x86\locales\lt.pak" />
+    <None Include="x86\locales\lv.pak" />
+    <None Include="x86\locales\ml.pak" />
+    <None Include="x86\locales\mr.pak" />
+    <None Include="x86\locales\ms.pak" />
+    <None Include="x86\locales\nb.pak" />
+    <None Include="x86\locales\nl.pak" />
+    <None Include="x86\locales\pl.pak" />
+    <None Include="x86\locales\pt-BR.pak" />
+    <None Include="x86\locales\pt-PT.pak" />
+    <None Include="x86\locales\ro.pak" />
+    <None Include="x86\locales\ru.pak" />
+    <None Include="x86\locales\sk.pak" />
+    <None Include="x86\locales\sl.pak" />
+    <None Include="x86\locales\sr.pak" />
+    <None Include="x86\locales\sv.pak" />
+    <None Include="x86\locales\sw.pak" />
+    <None Include="x86\locales\ta.pak" />
+    <None Include="x86\locales\te.pak" />
+    <None Include="x86\locales\th.pak" />
+    <None Include="x86\locales\tr.pak" />
+    <None Include="x86\locales\uk.pak" />
+    <None Include="x86\locales\vi.pak" />
+    <Content Include="x86\locales\zh-CN.pak" />
+    <Content Include="x86\locales\zh-TW.pak" />
+    <Content Include="x86\natives_blob.bin" />
+    <Content Include="x86\snapshot_blob.bin" />
+    <Content Include="x86\v8_context_snapshot.bin" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -248,6 +319,53 @@
     <Content Include="logo.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Plugins\pepflashplayer64_29_0_0_171.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="x64\CefSharp.BrowserSubprocess.Core.dll" />
+    <Content Include="x64\CefSharp.BrowserSubprocess.Core.pdb" />
+    <Content Include="x64\CefSharp.BrowserSubprocess.exe" />
+    <Content Include="x64\CefSharp.BrowserSubprocess.pdb" />
+    <Content Include="x64\CefSharp.Core.dll" />
+    <Content Include="x64\CefSharp.Core.pdb" />
+    <Resource Include="x64\CefSharp.Core.xml" />
+    <Content Include="x64\CefSharp.dll" />
+    <Content Include="x64\CefSharp.pdb" />
+    <Content Include="x64\CefSharp.Wpf.dll" />
+    <Content Include="x64\CefSharp.Wpf.pdb" />
+    <Resource Include="x64\CefSharp.Wpf.XML" />
+    <Resource Include="x64\CefSharp.XML" />
+    <Content Include="x64\chrome_elf.dll" />
+    <Content Include="x64\d3dcompiler_43.dll" />
+    <Content Include="x64\d3dcompiler_47.dll" />
+    <Content Include="x64\libcef.dll" />
+    <Content Include="x64\libEGL.dll" />
+    <Content Include="x64\libGLESv2.dll" />
+    <Content Include="x64\swiftshader\libEGL.dll" />
+    <Content Include="x64\swiftshader\libGLESv2.dll" />
+    <Content Include="x64\widevinecdmadapter.dll" />
+    <Content Include="x86\CefSharp.BrowserSubprocess.Core.dll" />
+    <Content Include="x86\CefSharp.BrowserSubprocess.Core.pdb" />
+    <Content Include="x86\CefSharp.BrowserSubprocess.exe" />
+    <Content Include="x86\CefSharp.BrowserSubprocess.pdb" />
+    <Content Include="x86\CefSharp.Core.dll" />
+    <Content Include="x86\CefSharp.Core.pdb" />
+    <Resource Include="x86\CefSharp.Core.xml" />
+    <Content Include="x86\CefSharp.dll" />
+    <Content Include="x86\CefSharp.pdb" />
+    <Content Include="x86\CefSharp.Wpf.dll" />
+    <Content Include="x86\CefSharp.Wpf.pdb" />
+    <Resource Include="x86\CefSharp.Wpf.XML" />
+    <Resource Include="x86\CefSharp.XML" />
+    <Content Include="x86\chrome_elf.dll" />
+    <Content Include="x86\d3dcompiler_43.dll" />
+    <Content Include="x86\d3dcompiler_47.dll" />
+    <Content Include="x86\libcef.dll" />
+    <Content Include="x86\libEGL.dll" />
+    <Content Include="x86\libGLESv2.dll" />
+    <Content Include="x86\swiftshader\libEGL.dll" />
+    <Content Include="x86\swiftshader\libGLESv2.dll" />
+    <Content Include="x86\widevinecdmadapter.dll" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6">
@@ -268,7 +386,7 @@
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
+      <PublishState>Exclude</PublishState>
       <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
@@ -278,22 +396,20 @@
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
+      <PublishState>Exclude</PublishState>
       <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="CefSharp.BrowserSubprocess.Core.dll" />
-    <Content Include="CefSharp.BrowserSubprocess.exe" />
-    <Content Include="chrome_elf.dll" />
-    <Content Include="d3dcompiler_47.dll" />
-    <Content Include="libcef.dll" />
-    <Content Include="libEGL.dll" />
-    <Content Include="libGLESv2.dll" />
-    <Content Include="swiftshader\libEGL.dll" />
-    <Content Include="swiftshader\libGLESv2.dll" />
-    <Content Include="widevinecdmadapter.dll" />
+    <PublishFile Include="CefSharp.Wpf">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -4,8 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TYBrowser"
+        xmlns:wpf="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
         mc:Ignorable="d"
-        Title="工控机浏览器" Height="450" Width="800" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" KeyDown="Window_KeyDown" Icon="logo.ico" Topmost="True" WindowState="Maximized" WindowStyle="None">
+        Title="工控机浏览器" Height="450" Width="800"  Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" KeyDown="Window_KeyDown" Icon="logo.ico" Topmost="False" WindowState="Maximized" WindowStyle="None">
 
     <GroupBox x:Name="gSetting" Header="启动参数" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.IsSharedSizeScope="True" Width="782" FontSize="20" Margin="5,0" Height="171">
         <Grid Margin="0,0,0,-34">
